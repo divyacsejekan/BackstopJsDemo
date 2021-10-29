@@ -1,0 +1,82 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "tablet",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "Desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "Login page",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com" 
+    },
+    {
+      "label": "Login error message page",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com",
+      "clickSelector":"#login-button"
+    },
+    {
+      "label": "Homepage/product listing page",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com",
+      "onReadyScript": "puppet/custom.js"
+    },
+    {
+      "label": "product page",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com",
+      "onReadyScript": "puppet/product.js"
+    },
+    {
+      "label": "Add to cart",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com",
+      "onReadyScript": "puppet/add_to_cart.js"
+    },
+    {
+      "label": "Checkout (end to end)",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "https://www.saucedemo.com",
+      "referenceUrl": "https://www.saucedemo.com",
+      "onReadyScript": "puppet/checkout.js"
+    }
+
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
